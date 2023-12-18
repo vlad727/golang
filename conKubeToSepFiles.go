@@ -1,4 +1,5 @@
-// 
+// allow convert file kubeconfig with format yaml to separate files already decoded from base64 
+
 package main
 
 import (
@@ -83,7 +84,7 @@ func main() {
 		err := os.WriteFile(k, []byte(decodedDate), 0644)
 		if err != nil {
 
-			log.Println("Can't create file")
+			log.Println("Cannot create file")
 		}
 
 	}

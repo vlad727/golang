@@ -1,4 +1,5 @@
 // allow convert file kubeconfig with format yaml to separate files already decoded from base64 
+// https://www.youtube.com/watch?v=A2tszRsUvHE about struct and unmarshal yaml
 
 package main
 

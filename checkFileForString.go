@@ -1,3 +1,4 @@
+// Be careful it works as grep 
 package main
 
 import (
@@ -30,9 +31,9 @@ func main() {
 	boolValue := checkData(userInput)
 
 	if boolValue {
-		fmt.Println("File hosts contain such host")
+		fmt.Printf("File hosts contain %s\n", userInput)
 	} else {
-		fmt.Println("File hosts does not contain such host")
+		fmt.Printf("I don't know about %s\n", userInput)
 	}
 
 }

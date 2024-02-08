@@ -1,0 +1,10 @@
+go tool dist list | grep linux ### get allowed arch 
+env GOOS=linux GOARCH=amd64 go build -o main ### build for linux amd64 
+
+### example .dockerignoredev-plan ###
+Dockerfile
+go.mod
+go.sum
+main.go
+
+

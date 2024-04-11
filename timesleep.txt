@@ -1,0 +1,16 @@
+time.Sleep(2 * time.Second)
+
+example: 
+func getNamespace() {
+
+	for {
+		time.Sleep(10 * time.Second) // sleep 10 sec
+		list, _ := clientset.CoreV1().ResourceQuotas("").List(context.Background(), v1.ListOptions{})
+
+		for _, item := range list.Items {
+
+			log.Info("Namespace:", item.Namespace, " ", "has quota ", item.Name)
+
+		}
+	}
+}

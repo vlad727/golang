@@ -1,0 +1,2 @@
+Explanation clientset watch list 
+https://vadasambar.com/post/kubernetes/understanding-listers-and-reflectors-in-client-go/

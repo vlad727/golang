@@ -1,5 +1,6 @@
 Explanation clientset watch list 
 https://vadasambar.com/post/kubernetes/understanding-listers-and-reflectors-in-client-go/
 https://github.com/vmware-archive/kubewatch/blob/master/main.go ### project vmware
+https://medium.com/capital-one-tech/using-kubernetes-configmap-resources-for-dynamic-apps-9e23ef589121 ### using-kubernetes-configmap-resources
 
 Watch internally establishes a long poll connection with the API server. After establishing a connection, the API server will send a batch of initial events and any subsequent changes. Once a timeout has occurred, the connection will be dropped.

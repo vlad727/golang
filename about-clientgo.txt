@@ -1,4 +1,5 @@
 Explanation clientset watch list 
 https://vadasambar.com/post/kubernetes/understanding-listers-and-reflectors-in-client-go/
+https://github.com/vmware-archive/kubewatch/blob/master/main.go ### project vmware
 
 Watch internally establishes a long poll connection with the API server. After establishing a connection, the API server will send a batch of initial events and any subsequent changes. Once a timeout has occurred, the connection will be dropped.

@@ -1,5 +1,3 @@
-### slices.Contains -> allow to exclude some namespaces from create quota 
-### https://freshman.tech/snippets/go/check-if-slice-contains-element/ 
 package main
 
 import (
@@ -7,6 +5,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/util/yaml"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
@@ -46,7 +45,7 @@ func getNamespace() {
 	}
 }
 
-// exclude namespace check input namespace and compare it with namespace from config file
+// exclude namespace, check input namespace and compare it with namespace from config file
 func exceptNs(name string) {
 
 	// get list from configmap
@@ -62,7 +61,7 @@ func exceptNs(name string) {
 	sort.Strings(stringToSlice)
 
 	if slices.Contains(stringToSlice, name) {
-		log.Printf("Нахуй квота для %s", name)
+		log.Printf("Нахуй квота для namespace: %s", name)
 	} else {
 		createQuota(name)
 	}
@@ -71,29 +70,44 @@ func exceptNs(name string) {
 
 // create quota for namespace
 func createQuota(x string) {
+	/*
+		// declare quota
+		quota := &v1.ResourceQuota{
+			ObjectMeta: metav1.ObjectMeta{
+				Name: "default",
+			},
+		}
 
-	// declare quota
-	quota := &v1.ResourceQuota{
-		ObjectMeta: metav1.ObjectMeta{
-			Name: "default",
-		},
-	}
-	// func create quota for new namespaces
-	_, err := clientset.CoreV1().ResourceQuotas(x).Create(context.TODO(), quota, metav1.CreateOptions{})
+	*/
+	b, err := os.ReadFile("quota.yaml")
 	if err != nil {
-		log.Info(err, " ", x)
+		panic(err)
+	}
+	// get yaml and convert it to  v1.ResourceQuota
+	// to provide it import "k8s.io/apimachinery/pkg/util/yaml"
+	quotaData := &v1.ResourceQuota{}
+	err = yaml.Unmarshal(b, quotaData)
+	if err != nil {
+		panic(err)
+	}
+	// create quota for new namespaces
+	_, err = clientset.CoreV1().ResourceQuotas(x).Create(context.TODO(), quotaData, metav1.CreateOptions{})
+	if err != nil {
+		log.Info(err, " ", "for ", x)
 	} else {
 		log.Info("Created quota for: ", x)
 	}
 
 }
+
+// main func
 func main() {
 
 	getNamespace()
 }
 
 /*
-exclude namespaces like: kube-system, kubernetes-, openshift-,box-,default etc.
++ exclude namespaces like: kube-system, kubernetes-, openshift-,box-,default etc.
 quota rbac should be configmap
 inside cluster solution
 time out (may be too much load for api)

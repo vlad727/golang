@@ -1,2 +1,4 @@
 https://github.com/iximiuz/client-go-examples/tree/main ### provide differences example with client-go and kubernetes
 https://dev.to/lucasepe/watch-and-react-to-kubernetes-objects-changes-3kcg ### Watch and react to Kubernetes objects changes
+https://github.com/lucasepe/using-client-go ### using-client-go examples
+https://github.com/dariubs/GoBooks?tab=readme-ov-file ### go book 

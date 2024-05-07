@@ -36,7 +36,7 @@ WORKDIR /build
 COPY --from=builder /build/hello /build/hello
 CMD [". /hello"]
 
-### my Dockerfile ###
+### Dockerfile ###
 FROM alpinelinux/golang AS builder
 WORKDIR /app
 COPY . /app

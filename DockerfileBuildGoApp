@@ -36,3 +36,18 @@ WORKDIR /build
 COPY --from=builder /build/hello /build/hello
 CMD [". /hello"]
 
+### my Dockerfile ###
+FROM alpinelinux/golang AS builder
+WORKDIR /app
+COPY . /app
+USER root
+RUN env GOOS=linux GOARCH=amd64 \
+    && go build -o webhook-app .  \
+    && rm go.mod go.sum main.go
+
+FROM alpine
+WORKDIR /app
+COPY --from=builder /app/webhook-app /app/webhook-app
+RUN  chmod u+x webhook-app && mkdir /certs  /files
+CMD ["./webhook-app"]
+

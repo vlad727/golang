@@ -1,0 +1,35 @@
+# main.go
+package main
+
+import (
+	"fmt"
+	"pak/importpackage" ### import package
+)
+
+func main() {
+
+	var userInput int
+	fmt.Println("Please input your number:")
+	fmt.Scanln(&userInput)
+	finishRes := importpackage.PlusFunc(userInput) ### func from another package(file)
+	fmt.Println(finishRes)
+}
+
+# package with func PlusFunc <<< should be with uppercase
+package importpackage
+
+func PlusFunc(x int) int {
+	y := 1
+	resultPlus := x + y
+	return resultPlus
+}
+
+# tree 
+.
+├── go.mod
+├── importpackage
+│   └── importpackage.go
+└── main.go
+
+init was with command below:
+go mod init pak

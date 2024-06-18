@@ -2,6 +2,7 @@ https://stackoverflow.com/questions/24809235/how-to-initialize-a-nested-struct <
 https://stackoverflow.com/questions/17912893/missing-type-in-composite-literal
 https://blog.logrocket.com/using-json-go-guide/
 
+
 package main
 
 import (
@@ -14,7 +15,7 @@ type Y struct {
 }
 
 type Annotations struct {
-	Annotations Requester
+	Annotations Requester `json:"annotations"`
 }
 type Requester struct {
 	Requester string `json:"requester"`
@@ -33,3 +34,4 @@ func main() {
 	fmt.Println(string(bytes2))
 
 }
+

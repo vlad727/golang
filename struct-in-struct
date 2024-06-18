@@ -1,0 +1,34 @@
+https://stackoverflow.com/questions/24809235/how-to-initialize-a-nested-struct <<< how to nested struct two examples
+https://stackoverflow.com/questions/17912893/missing-type-in-composite-literal
+
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+)
+
+type Y struct {
+	Metadata Annotations `json:"metadata"`
+}
+
+type Annotations struct {
+	Annotations Requester
+}
+type Requester struct {
+	Requester string `json:"requester"`
+}
+
+func main() {
+
+	requesterName := "admin"
+
+	setAnnotation := Y{
+		Metadata: Annotations{
+			Requester{requesterName},
+		},
+	}
+	bytes2, _ := json.Marshal(setAnnotation)
+	fmt.Println(string(bytes2))
+
+}

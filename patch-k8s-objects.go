@@ -62,6 +62,13 @@ func main() {
 	}
 	fmt.Println("Succesed patch namespace", string(bytes))
 }
+/*
+Result
+k get ns vlku7 -o json | jq .metadata.annotations
+{
+  "requester": "admin"
+}
+*/
 
 //https://stackoverflow.com/questions/69125257/golang-kubernetes-client-patching-an-existing-resource-with-a-label <<< diff merge and json
 

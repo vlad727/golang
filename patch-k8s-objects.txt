@@ -1,0 +1,23 @@
+All about patch k8s objects
+
+https://stackoverflow.com/questions/24809235/how-to-initialize-a-nested-struct
+
+https://stackoverflow.com/questions/57310483/whats-the-shortest-way-to-add-a-label-to-a-pod-using-the-kubernetes-go-client
+
+https://www.codeproject.com/Articles/1253667/Patching-Kubernetes-Resources-in-Golang
+
+https://miminar.fedorapeople.org/_preview/openshift-enterprise/registry-redeploy/go_client/standard_api_operations.html
+
+https://stackoverflow.com/questions/69125257/golang-kubernetes-client-patching-an-existing-resource-with-a-label
+
+https://loft.sh/blog/kubectl-patch-what-you-can-use-it-for-and-how-to-do-it/#merge?utm_medium=reader&utm_source=loft-blog&utm_campaign=blog_kubectl-patch-what-you-can-use-it-for-and-how-to-do-it
+
+https://komodor.com/learn/kubectl-patch-changing-kubernetes-objects-in-place/
+
+https://github.com/kubernetes/client-go/issues/1096
+
+https://habr.com/ru/companies/slurm/articles/507208/ 
+
+https://komodor.com/learn/kubectl-patch-changing-kubernetes-objects-in-place/
+
+https://stackoverflow.com/questions/69125257/golang-kubernetes-client-patching-an-existing-resource-with-a-label
